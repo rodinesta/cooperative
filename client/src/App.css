@@ -155,6 +155,15 @@
     display: flex;
     flex-direction: column;
 }
+.searchMember {
+    font-family: "Inter Regular";
+    font-size: 22px;
+    resize: none;
+    border-radius: 5px;
+    padding: 7px;
+    width: 100%;
+    height: 50px;
+}
 .addMember textarea {
     background: rgba(136, 136, 136, 1%);
     font-family: "Inter Regular";

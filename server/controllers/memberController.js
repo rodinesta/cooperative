@@ -1,7 +1,10 @@
 const ApiError = require('../error/ApiError')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const uuid = require('uuid')
+
 const {Member} = require('../models/models')
+const path = require("path");
 
 const generateJwt = (id, login, roleId) => {
     return jwt.sign(
@@ -63,6 +66,20 @@ class memberController {
         try {
             const {id} = req.params
             return res.json(await Member.findOne({where: {id}}))
+        } catch (e) {
+            next(ApiError.badRequest(e.message))
+        }
+    }
+
+    async changePhoto(req, res, next) {
+        try {
+            const {id} = req.body
+            const {Img} = req.files
+            let fileName = uuid.v4() + ".jpg"
+            await Img.mv(path.resolve(__dirname, '..', 'static', fileName))
+
+            const member = await Member.update({photo: fileName}, {where: {id}})
+            return res.json(member)
         } catch (e) {
             next(ApiError.badRequest(e.message))
         }

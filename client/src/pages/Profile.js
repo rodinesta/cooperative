@@ -1,19 +1,22 @@
-import React, {useContext, useEffect} from 'react';
-import {Button, Container} from "react-bootstrap";
-import avt from "../static/image 2.png"
+import React, {useContext, useEffect, useState} from 'react';
+import {Button, Container, Image} from "react-bootstrap";
 import d from "../static/дача1.jpg"
 import {Context} from "../index";
 import jwt_decode from "jwt-decode";
 import {receiveMember} from "../http/MemberAPI";
 import {observer} from "mobx-react-lite";
+import UpdatePhoto from "../components/modals/updatePhoto";
 
 const Profile = observer(() => {
     const {member} = useContext(Context)
     const token = jwt_decode(localStorage.getItem('token'))
+    const [updatePhotoVisible, setUpdatePhotoVisible] = useState(false)
 
     useEffect(() => {
         receiveMember(token.id).then(data => member.setMember(data))
     }, [])
+
+
 
     return (
         <div style={{background: 'white'}}>
@@ -32,8 +35,8 @@ const Profile = observer(() => {
 
                     <div>
                         <div className="avatar px-5">
-                            <img src="https://sun9-21.userapi.com/impg/c856016/v856016555/1f4309/nkbEE6IBYMc.jpg?size=719x1280&quality=96&sign=505869b5b4991f32d9de15e299e162f5&type=album" style={{width: '250px', height: '333px'}}/>
-                            <Button>Сменить фотографию</Button>
+                            <Image src={process.env.REACT_APP_API_URL + member.member.photo} style={{width: '250px', height: '333px'}}/>
+                            <Button onClick={() => setUpdatePhotoVisible(true)}>Сменить фотографию</Button>
                         </div>
                     </div>
                 </div>
@@ -41,6 +44,7 @@ const Profile = observer(() => {
                     <h3>Фотография участка</h3>
                     <img src={d} style={{width: '55%', marginBottom: '50px'}}/>
                 </div>
+                <UpdatePhoto show={updatePhotoVisible} onHide={() => setUpdatePhotoVisible(false)}/>
             </Container>
         </div>
 

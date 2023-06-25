@@ -6,6 +6,6 @@ router.post('/registration', memberController.registration)
 router.post('/login', memberController.login)
 router.get('/', memberController.getAll)
 router.get('/:id', memberController.getOne)
-router.put('/addInfo', )
+router.put('/updatePhoto', memberController.changePhoto)
 
 module.exports = router

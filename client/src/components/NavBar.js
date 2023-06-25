@@ -17,7 +17,12 @@ import jwt_decode from "jwt-decode";
 const NavBar = observer(() => {
     const {member} = useContext(Context)
     const navigate = useNavigate()
-    const tokenRoleId = jwt_decode(localStorage.getItem('token')).roleId
+    let tokenRoleId
+    try {
+        tokenRoleId = jwt_decode(localStorage.getItem('token')).roleId
+    } catch (e) {
+
+    }
 
     const logOut = () => {
         localStorage.removeItem('token')
@@ -33,7 +38,7 @@ const NavBar = observer(() => {
                     <Navbar.Brand href="/" className="brand">Дачный кооператив</Navbar.Brand>
                     {member.isAuth ?
                         <Nav>
-                            {tokenRoleId === 1 ?
+                            {tokenRoleId === 2 ?
                                 <Nav>
                                     <Nav.Link href={MEMBERS_ROUTE} className="navBarLinks">Список участников</Nav.Link>
                                 </Nav>:<Nav/>

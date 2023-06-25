@@ -3,6 +3,7 @@ import {receiveMembers, registrateUser, registration} from "../http/MemberAPI";
 import {Context} from "../index";
 import {Button, Container, Row} from "react-bootstrap";
 import MemberList from "../components/MemberList";
+import {observer} from "mobx-react-lite";
 
 const Members = () => {
     const {member} = useContext(Context)
@@ -82,4 +83,4 @@ const Members = () => {
     );
 };
 
-export default Members;
+export default observer(Members);
