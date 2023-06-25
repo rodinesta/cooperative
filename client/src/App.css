@@ -7,17 +7,12 @@
     padding: 0;
 }
 
-.App {
-    color: white;
-}
-
 .image {
     background: url("static/img1.png") no-repeat;
     background-size: cover;
     height: 400px;
     position: relative;
 }
-
 .dark {
     position: absolute;
     height: 100%;
@@ -27,25 +22,21 @@
     justify-content: center;
     align-items: center;
 }
-
 .image h1 {
     font-family: "Inter Light";
     color: #FFFFFF;
     font-size: 44px;
     opacity: 95%;
 }
-
 .homePageInfo {
     display: grid;
     justify-content: center;
     justify-items: center;
 }
-
 .homePageInfo text {
     font-family: "Inter Regular";
     font-size: 24px;
 }
-
 .homePageInfo h2 {
     margin-top: 60px;
     margin-bottom: 25px;
@@ -106,16 +97,13 @@
     background: rgba(136, 136, 136, 30%);
     margin-bottom: 15px;
 }
-
 .writeReview h3{
     font-family: "Inter Bold";
 }
-
 .writeReview p{
     font-family: "Inter Regular";
     font-size: 14px;
 }
-
 .textReview {
     background: rgba(136, 136, 136, 1%);
     font-family: "Inter Regular";
@@ -126,7 +114,6 @@
     width: 100%;
     min-height: 100px;
 }
-
 .review {
     width: 100%;
     display: flex;
@@ -138,29 +125,56 @@
     margin-bottom: 15px;
     background: rgba(136, 136, 136, 30%);
 }
-
 .reviewMember {
     font-family: "Inter Bold";
     font-size: 22px;
 }
-
 .reviewText {
     font-family: "Inter Regular";
     font-size: 18px;
 }
-
 .reviewComments {
     font-family: "Inter Regular";
     font-size: 14px;
     color: #888;
 }
-
 .reviewDate {
     font-family: "Inter Regular";
     font-size: 14px;
     color: #888;
 }
-
 .reviewList {
     padding: 10px;
+}
+
+.addMember {
+    background: rgba(136, 136, 136, 30%);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.addMember textarea {
+    background: rgba(136, 136, 136, 1%);
+    font-family: "Inter Regular";
+    font-size: 18px;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    width: 200px;
+    white-space: nowrap;
+    max-height: 40px;
+}
+.memberItem {
+    background: rgba(136, 136, 136, 30%);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+.memberItemName {
+    font-family: "Inter Bold";
+    font-size: 20px;
 }

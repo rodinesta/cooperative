@@ -10,15 +10,12 @@ import {
 } from "../utils/consts";
 import Home from "../pages/Home";
 import Auth from "../pages/Auth";
-import {Context} from "../index";
 import Profile from "../pages/Profile";
 import Reviews from "../pages/Reviews";
 import Members from "../pages/Members";
 
 const AppRouter = () => {
-    const {member} = useContext(Context)
 
-    console.log(member)
     return (
         <Routes>
             <Route path={HOME_ROUTE} element={<Home/>} />

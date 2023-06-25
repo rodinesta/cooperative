@@ -32,7 +32,7 @@ const Profile = observer(() => {
 
                     <div>
                         <div className="avatar px-5">
-                            <img src={avt} style={{width: '250px', height: '333px'}}/>
+                            <img src="https://sun9-21.userapi.com/impg/c856016/v856016555/1f4309/nkbEE6IBYMc.jpg?size=719x1280&quality=96&sign=505869b5b4991f32d9de15e299e162f5&type=album" style={{width: '250px', height: '333px'}}/>
                             <Button>Сменить фотографию</Button>
                         </div>
                     </div>

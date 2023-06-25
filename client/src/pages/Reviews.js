@@ -5,8 +5,6 @@ import ReviewList from "../components/ReviewList";
 import {createReview, receiveReviews} from "../http/ReviewAPI";
 import {Context} from "../index";
 import jwt_decode from "jwt-decode";
-import {useNavigate} from "react-router-dom";
-import {REVIEWS_ROUTE} from "../utils/consts";
 
 const Reviews = observer(() => {
     const {review} = useContext(Context)
@@ -24,6 +22,9 @@ const Reviews = observer(() => {
         try {
             await createReview(text, memberId)
             setText('')
+            receiveReviews().then(data => {
+                review.setReview(data)
+            })
         } catch (e) {
             alert(e.response.data.message)
         }
@@ -34,8 +35,6 @@ const Reviews = observer(() => {
             review.setReview(data)
         })
     }, [])
-
-
 
     return (
         <div>

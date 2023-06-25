@@ -33,8 +33,8 @@ const Member = sequelize.define('Member', {
     secondName: {type: DataTypes.TEXT},
     thirdName: {type: DataTypes.TEXT},
     phoneNumber: {type: DataTypes.TEXT},
-    paymentAmount: {type: DataTypes.INTEGER, default: 0},
-    duty: {type: DataTypes.INTEGER, default: 0},
+    paymentAmount: {type: DataTypes.INTEGER, defaultValue: 250},
+    duty: {type: DataTypes.INTEGER, defaultValue: 0},
     photo: {type: DataTypes.TEXT},
 })
 

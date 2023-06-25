@@ -14,7 +14,7 @@ const generateJwt = (id, login, roleId) => {
 class memberController {
     async registration(req, res, next) {
         try {
-            const {login, password, fullName, phoneNumber, RoleId} = req.body
+            const {login, password, firstName, secondName, thirdName, phoneNumber, RoleId} = req.body
             if(!login || !password) {
                 return next(ApiError.badRequest('Некорректный логин или пароль'))
             }
@@ -23,7 +23,7 @@ class memberController {
                 return next(ApiError.badRequest('Пользователь с таким логином уже существует'))
             }
             const hashPassword = await bcrypt.hash(password, 5)
-            const member = await Member.create({login, password: hashPassword, fullName, phoneNumber, RoleId})
+            const member = await Member.create({login, password: hashPassword,  firstName, secondName, thirdName, phoneNumber, RoleId})
             const token = generateJwt(member.id, login, RoleId)
             return res.json({token})
         } catch (e) {
@@ -48,6 +48,14 @@ class memberController {
             return res.json({token})
         } catch (e) {
             return next(ApiError.badRequest(e.message))
+        }
+    }
+
+    async getAll(req, res, next) {
+        try {
+            return res.json(await Member.findAll())
+        } catch (e) {
+            next(ApiError.badRequest(e.message))
         }
     }
 

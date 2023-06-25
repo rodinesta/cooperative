@@ -4,7 +4,7 @@ const memberController = require('../controllers/memberController')
 
 router.post('/registration', memberController.registration)
 router.post('/login', memberController.login)
-router.get('/auth', )
+router.get('/', memberController.getAll)
 router.get('/:id', memberController.getOne)
 router.put('/addInfo', )
 
