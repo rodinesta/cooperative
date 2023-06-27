@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import moment from "moment";
 import 'moment/locale/ru'
 import {receiveMember} from "../http/MemberAPI";
@@ -11,15 +11,17 @@ const ReviewItem = observer(({review}) => {
     const formattedDate = moment(review.createdAt).format('DD MMMM, HH:mm ')
 
     const {member} = useContext(Context)
+    const [user, setUser] = useState(member)
+
     useEffect(() => {
         receiveMember(review.MemberId).then(data => {
-            member.setMember(data)
+            setUser(data)
         })
     }, [])
 
     return (
         <div className="review">
-            <text className="reviewMember">{member.member.firstName} {member.member.secondName}</text>
+            <text className="reviewMember">{user.firstName} {user.secondName}</text>
             <text className="reviewDate">{formattedDate}</text>
             <text className="reviewText">{review.text}</text>
             <text className="reviewComments">Смотреть комментарии (n штук)</text>

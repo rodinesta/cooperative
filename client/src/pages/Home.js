@@ -5,6 +5,7 @@ import ReviewItem from "../components/ReviewItem";
 import {Context} from "../index";
 import ReviewList from "../components/ReviewList";
 import {receiveReviews} from "../http/ReviewAPI";
+import {observer} from "mobx-react-lite";
 
 const Home = () => {
     const {review} = useContext(Context)
@@ -13,7 +14,7 @@ const Home = () => {
         receiveReviews().then(data => {
             review.setReview(data)
         })
-    }, [review])
+    }, [])
 
     return (
         <div style={{background: "#FFFFFF"}}>
@@ -30,7 +31,7 @@ const Home = () => {
                 <Slider/>
                 <h2>Отзывы</h2>
                 <Row className="d-flex">
-                    {review.review?.slice(0, 2).map(review =>
+                    {review.review?.slice(2, 4).map(review =>
                         <ReviewItem key={review.id} review={review}/>
                     )}
                 </Row>
@@ -41,4 +42,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default observer(Home);
