@@ -7,7 +7,7 @@ import {
     LOGIN_ROUTE,
     MEMBERS_ROUTE,
     REVIEWS_ROUTE,
-    PROFILE_ROUTE
+    PROFILE_ROUTE, SECTOR_ROUTE
 } from "../utils/consts";
 import "./NavBar.css"
 import {observer} from "mobx-react-lite";
@@ -39,6 +39,7 @@ const NavBar = observer(() => {
                         <Nav>
                             {tokenRoleId === 2 ?
                                 <Nav>
+                                    <Nav.Link href={SECTOR_ROUTE} className="navBarLinks">Список участков</Nav.Link>
                                     <Nav.Link href={MEMBERS_ROUTE} className="navBarLinks">Список участников</Nav.Link>
                                 </Nav>:<Nav/>
                             }

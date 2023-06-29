@@ -3,6 +3,8 @@ import {observer} from "mobx-react-lite";
 import {Row} from "react-bootstrap";
 import {Context} from "../index";
 import {receiveMembers} from "../http/MemberAPI";
+import {receiveSectorById, receiveSectors} from "../http/SectorAPI";
+import MemberItem from "./MemberItem";
 
 const MemberList = observer(() => {
     const {member} = useContext(Context)
@@ -37,12 +39,7 @@ const MemberList = observer(() => {
             </Row>
             <Row className="d-flex">
                 {filteredMembers?.map(member =>
-                    <div className="memberItem mt-4" key={member.id}>
-                        <text className="memberItemName">{member.secondName} {member.firstName} {member.thirdName}</text>
-                        <text style={{fontFamily: "Inter Regular"}}>Задолженность: {member.duty} рублей</text>
-                        <text style={{fontFamily: "Inter Regular"}}>Ежемесячный взнос: {member.paymentAmount} рублей</text>
-                        <text style={{fontFamily: "Inter Regular"}}>Адрес участка: </text>
-                    </div>
+                    <MemberItem member={member}/>
                 )}
             </Row>
         </>

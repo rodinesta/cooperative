@@ -6,12 +6,12 @@ const path = require("path");
 class sectorController {
     async create(req, res, next) {
         try {
-            const {address, sectorStatusId} = req.body
+            const {address, SectorStatusId} = req.body
             const {Img} = req.files
             let fileName = uuid.v4() + ".jpg"
             await Img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
-            const sector = await Sector.create({address, photo:fileName, sectorStatusId})
+            const sector = await Sector.create({address, SectorStatusId, photo:fileName})
             return res.json(sector)
         } catch (e) {
             next(ApiError.badRequest(e.message))

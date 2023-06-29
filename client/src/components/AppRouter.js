@@ -6,7 +6,8 @@ import {
     MEMBERS_ROUTE,
     REVIEWS_ROUTE,
     PROFILE_ROUTE,
-    REVIEW_ROUTE
+    REVIEW_ROUTE,
+    SECTOR_ROUTE
 } from "../utils/consts";
 import Home from "../pages/Home";
 import Auth from "../pages/Auth";
@@ -14,6 +15,7 @@ import Profile from "../pages/Profile";
 import Reviews from "../pages/Reviews";
 import Members from "../pages/Members";
 import ReviewPage from "../pages/ReviewPage";
+import Sectors from "../pages/Sectors";
 
 const AppRouter = () => {
 
@@ -25,6 +27,7 @@ const AppRouter = () => {
             <Route path={REVIEW_ROUTE} element={<ReviewPage/>} />
             <Route path={MEMBERS_ROUTE} element={<Members/>} />
             <Route path={LOGIN_ROUTE} element={<Auth/>} />
+            <Route path={SECTOR_ROUTE} element={<Sectors/>} />
         </Routes>
     );
 };

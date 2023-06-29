@@ -5,7 +5,7 @@ export const createSector = async (formData) => {
     return data
 }
 
-export const receiveSector = async () => {
+export const receiveSectors = async () => {
     const {data} = await $host.get('api/sector')
     return data
 }
