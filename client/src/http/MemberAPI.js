@@ -26,3 +26,8 @@ export const updatePhoto = async (formData) => {
     const {data} = await $host.put('api/member/updatePhoto', formData)
     return data
 }
+
+export const changeInfo = async (id, secondName, firstName, phoneNumber) => {
+    const {data} = await $host.put('api/member/changeInfo', {id, secondName, firstName, phoneNumber})
+    return data
+}

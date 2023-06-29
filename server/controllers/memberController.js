@@ -5,6 +5,7 @@ const uuid = require('uuid')
 
 const {Member} = require('../models/models')
 const path = require("path");
+const {where} = require("sequelize");
 
 const generateJwt = (id, login, roleId) => {
     return jwt.sign(
@@ -80,6 +81,15 @@ class memberController {
 
             const member = await Member.update({photo: fileName}, {where: {id}})
             return res.json(member)
+        } catch (e) {
+            next(ApiError.badRequest(e.message))
+        }
+    }
+    
+    async changeInfo(req, res, next) {
+        try {
+            const {id, secondName, firstName, phoneNumber} = req.body
+            return res.json(await Member.update({secondName: secondName, firstName: firstName, phoneNumber: phoneNumber}, {where: {id}}))
         } catch (e) {
             next(ApiError.badRequest(e.message))
         }

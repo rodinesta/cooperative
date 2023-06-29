@@ -6,11 +6,13 @@ import jwt_decode from "jwt-decode";
 import {receiveMember} from "../http/MemberAPI";
 import {observer} from "mobx-react-lite";
 import UpdatePhoto from "../components/modals/updatePhoto";
+import UpdateMemberInfo from "../components/modals/updateMemberInfo";
 
 const Profile = observer(() => {
     const {member} = useContext(Context)
     const token = jwt_decode(localStorage.getItem('token'))
     const [updatePhotoVisible, setUpdatePhotoVisible] = useState(false)
+    const [updateMemberInfo, setUpdateMemberInfoVisible] = useState(false)
 
     useEffect(() => {
         receiveMember(token.id).then(data => member.setMember(data))
@@ -27,7 +29,7 @@ const Profile = observer(() => {
                             <text>Адрес участка: </text>
                             <text>Ежемесячная плата: {member.member.paymentAmount} рублей.</text>
                             <text>Задолженность: {member.member.duty} рублей.</text>
-                            <Button>Сменить личные данные</Button>
+                            <Button onClick={() => setUpdateMemberInfoVisible(true)}>Сменить личные данные</Button>
                         </div>
                     </div>
 
@@ -43,6 +45,7 @@ const Profile = observer(() => {
                     <img src={d} style={{width: '55%', marginBottom: '50px'}}/>
                 </div>
                 <UpdatePhoto show={updatePhotoVisible} onHide={() => setUpdatePhotoVisible(false)}/>
+                <UpdateMemberInfo show={updateMemberInfo} onHide={() => setUpdateMemberInfoVisible(false)} id={token.id}/>
             </Container>
         </div>
 

@@ -7,5 +7,6 @@ router.post('/login', memberController.login)
 router.get('/', memberController.getAll)
 router.get('/:id', memberController.getOne)
 router.put('/updatePhoto', memberController.changePhoto)
+router.put('/changeInfo', memberController.changeInfo)
 
 module.exports = router
