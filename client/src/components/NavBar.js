@@ -7,8 +7,7 @@ import {
     LOGIN_ROUTE,
     MEMBERS_ROUTE,
     REVIEWS_ROUTE,
-    PROFILE_ROUTE,
-    REGISTRATION_ROUTE
+    PROFILE_ROUTE
 } from "../utils/consts";
 import "./NavBar.css"
 import {observer} from "mobx-react-lite";
@@ -49,8 +48,7 @@ const NavBar = observer(() => {
                         </Nav>
                         :
                         <Nav>
-                            <Nav.Link href={LOGIN_ROUTE}>Войти</Nav.Link>
-                            <Button className="ms-2" href={REGISTRATION_ROUTE}>Зарегистрироваться</Button>
+                            <Button className="ms-2" href={LOGIN_ROUTE}>Войти</Button>
                         </Nav>
                     }
                 </Container>

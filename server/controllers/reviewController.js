@@ -1,6 +1,4 @@
 const ApiError = require('../error/ApiError')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
 const {Review} = require('../models/models')
 
 class reviewController {

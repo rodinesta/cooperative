@@ -16,8 +16,6 @@ const Profile = observer(() => {
         receiveMember(token.id).then(data => member.setMember(data))
     }, [])
 
-
-
     return (
         <div style={{background: 'white'}}>
             <Container>
