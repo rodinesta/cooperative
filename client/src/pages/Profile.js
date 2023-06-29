@@ -7,16 +7,21 @@ import {receiveMember} from "../http/MemberAPI";
 import {observer} from "mobx-react-lite";
 import UpdatePhoto from "../components/modals/updatePhoto";
 import UpdateMemberInfo from "../components/modals/updateMemberInfo";
+import {receiveSectorById} from "../http/SectorAPI";
 
 const Profile = observer(() => {
     const {member} = useContext(Context)
     const token = jwt_decode(localStorage.getItem('token'))
+    const [sector, setSector] = useState([])
     const [updatePhotoVisible, setUpdatePhotoVisible] = useState(false)
     const [updateMemberInfo, setUpdateMemberInfoVisible] = useState(false)
 
     useEffect(() => {
         receiveMember(token.id).then(data => member.setMember(data))
-    }, [])
+        if (member.member.SectorId) {
+            receiveSectorById(member.member.SectorId).then(data => setSector(data))
+        }
+    }, [member.member.SectorId])
 
     return (
         <div style={{background: 'white'}}>
@@ -26,7 +31,7 @@ const Profile = observer(() => {
                         <div className="profile-info">
                             <h3>Добро пожаловать, {member.member.firstName}!</h3>
                             <text>Контактные данные: {member.member.phoneNumber}</text>
-                            <text>Адрес участка: </text>
+                            <text>Адрес участка: {sector.address}</text>
                             <text>Ежемесячная плата: {member.member.paymentAmount} рублей.</text>
                             <text>Задолженность: {member.member.duty} рублей.</text>
                             <Button onClick={() => setUpdateMemberInfoVisible(true)}>Сменить личные данные</Button>
@@ -42,7 +47,7 @@ const Profile = observer(() => {
                 </div>
                 <div className="sectorPhoto">
                     <h3>Фотография участка</h3>
-                    <img src={d} style={{width: '55%', marginBottom: '50px'}}/>
+                    <img src={process.env.REACT_APP_API_URL + sector.photo} style={{width: '55%', marginBottom: '50px'}}/>
                 </div>
                 <UpdatePhoto show={updatePhotoVisible} onHide={() => setUpdatePhotoVisible(false)}/>
                 <UpdateMemberInfo show={updateMemberInfo} onHide={() => setUpdateMemberInfoVisible(false)} id={token.id}/>

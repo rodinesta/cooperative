@@ -20,10 +20,9 @@ const SectorStatus = sequelize.define('SectorStatus', {
 
 const Sector = sequelize.define('Sector', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    title: {type: DataTypes.TEXT},
     address: {type: DataTypes.TEXT},
     photo: {type: DataTypes.TEXT}
-})
+}, {createdAt: false, updatedAt: false})
 
 const Member = sequelize.define('Member', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
