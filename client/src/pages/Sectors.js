@@ -15,7 +15,7 @@ const Sectors = () => {
                 {sectors.map(sector => (
                     <div className="sectors" key={sector.id}>
                         <text>{sector.address}</text>
-                        <img src={process.env.REACT_APP_API_URL + sector.photo} style={{width: '100%',}}/>
+                        <img src={process.env.REACT_APP_API_URL + sector.photo} style={{width: '545px', height: '400px'}}/>
                         <Button style={{marginTop: "15px", width: "50%"}}>Сменить фотографию</Button>
                     </div>
                 ))}

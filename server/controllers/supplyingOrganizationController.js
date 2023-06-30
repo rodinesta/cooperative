@@ -15,7 +15,7 @@ class SupplyingOrganizationController {
     }
 
     async getAll(req, res) {
-        return res.json(await SupplyingOrganization.findAll())
+        return res.json(await SupplyingOrganization.findAll({include: [{model: Resource}]}))
     }
 }
 

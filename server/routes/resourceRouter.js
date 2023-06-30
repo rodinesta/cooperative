@@ -1,7 +1,7 @@
 const Router = require('express')
 const router = new Router()
+const resourceController = require('../controllers/resourceController')
 
-router.post('/',)
-router.get('/',)
+router.get('/', resourceController.getAll)
 
 module.exports = router
