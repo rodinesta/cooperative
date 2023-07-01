@@ -5,7 +5,7 @@ import {Context} from "../index";
 import jwt_decode from "jwt-decode";
 import {receiveMember} from "../http/MemberAPI";
 import {observer} from "mobx-react-lite";
-import UpdatePhoto from "../components/modals/updatePhoto";
+import UpdateMemberPhoto from "../components/modals/updateMemberPhoto";
 import UpdateMemberInfo from "../components/modals/updateMemberInfo";
 import {receiveSectorById} from "../http/SectorAPI";
 
@@ -49,7 +49,7 @@ const Profile = observer(() => {
                     <h3>Фотография участка</h3>
                     <img src={process.env.REACT_APP_API_URL + sector.photo} style={{width: '55%', marginBottom: '50px'}}/>
                 </div>
-                <UpdatePhoto show={updatePhotoVisible} onHide={() => setUpdatePhotoVisible(false)}/>
+                <UpdateMemberPhoto show={updatePhotoVisible} onHide={() => setUpdatePhotoVisible(false)}/>
                 <UpdateMemberInfo show={updateMemberInfo} onHide={() => setUpdateMemberInfoVisible(false)} id={token.id}/>
             </Container>
         </div>

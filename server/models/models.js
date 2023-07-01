@@ -98,5 +98,5 @@ SupplyingOrganization.belongsToMany(Sector, {through: SectorOrganization})
 
 
 module.exports = {
-    Resource, SupplyingOrganization, SectorStatus, Sector, SectorStatus, Member, Role, Payment, Review, Comment
+    Resource, SupplyingOrganization, SectorStatus, Sector, SectorStatus, Member, Role, Payment, Review, Comment, SectorOrganization
 }

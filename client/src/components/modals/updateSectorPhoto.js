@@ -1,24 +1,25 @@
 import React, {useContext, useState} from 'react';
 import {observer} from "mobx-react-lite";
 import {Button, Modal} from "react-bootstrap";
-import {updatePhoto} from "../../http/MemberAPI";
-import jwt_decode from "jwt-decode";
-import {useParams} from "react-router-dom";
-import {PROFILE_ROUTE} from "../../utils/consts";
+import {PROFILE_ROUTE, SECTOR_ROUTE} from "../../utils/consts";
+import {changePhoto} from "../../http/SectorAPI";
+import {useNavigate} from "react-router-dom";
 
-const UpdatePhoto = observer(({show, onHide}) => {
+const UpdateSectorPhoto = observer(({show, onHide, id}) => {
 
-    const token = jwt_decode(localStorage.getItem('token'))
     const [file, setFile] = useState(null)
+    const navigate = useNavigate()
 
     const selectFile = e => {
         setFile(e.target.files[0])
     }
-    const updatePhotoFunc = () => {
+    const changePhotoFunc = async () => {
         const formData = new FormData();
-        formData.append('id', token.id)
-        formData.append('Img', file)
-        updatePhoto(formData).then(data => onHide())
+        formData.append('id', id)
+        formData.append('photo', file)
+        await changePhoto(formData)
+        onHide()
+        window.location.reload()
     }
 
     return (
@@ -28,17 +29,17 @@ const UpdatePhoto = observer(({show, onHide}) => {
             centered>
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Изменить фотографию
+                    Изменить фотографию участка
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <input type="file" onChange={selectFile}/>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant={"outline-dark"} onClick={updatePhotoFunc} href={PROFILE_ROUTE}>Изменить</Button>
+                <Button variant={"outline-dark"} onClick={changePhotoFunc}>Изменить</Button>
             </Modal.Footer>
         </Modal>
     );
 });
 
-export default UpdatePhoto;
+export default UpdateSectorPhoto;

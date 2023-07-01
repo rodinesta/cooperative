@@ -14,3 +14,7 @@ export const receiveSectorById = async (id) => {
     const {data} = await $host.get('api/sector/' + id)
     return data
 }
+
+export const changePhoto = async (formData) => {
+    const {data} = await $host.put('api/sector', formData)
+}
