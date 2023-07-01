@@ -31,3 +31,8 @@ export const changeInfo = async (id, secondName, firstName, phoneNumber) => {
     const {data} = await $host.put('api/member/changeInfo', {id, secondName, firstName, phoneNumber})
     return data
 }
+
+export const setSector = async (id, sectorId) => {
+    const {data} = await $host.put('api/member/setSector', {id, sectorId})
+    return data
+}

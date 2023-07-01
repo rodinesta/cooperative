@@ -94,6 +94,16 @@ class memberController {
             next(ApiError.badRequest(e.message))
         }
     }
+
+    async setSector(req, res, next) {
+        try {
+            const {id, sectorId} = req.body
+            const member = await Member.update({SectorId: sectorId}, {where: {id}})
+            return res.json(member)
+        } catch (e) {
+            next(ApiError.badRequest(e.message))
+        }
+    }
 }
 
 module.exports = new memberController()

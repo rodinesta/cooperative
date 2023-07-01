@@ -240,3 +240,10 @@
 .gray-row {
     background-color: #cccccc !important;
 }
+
+.selected {
+    background: #007aff;
+}
+.selected:hover {
+    background: #007aff;
+}

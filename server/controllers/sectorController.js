@@ -7,9 +7,9 @@ class sectorController {
     async create(req, res, next) {
         try {
             const {address, SectorStatusId} = req.body
-            const {Img} = req.files
+            const {photo} = req.files
             let fileName = uuid.v4() + ".jpg"
-            await Img.mv(path.resolve(__dirname, '..', 'static', fileName))
+            await photo.mv(path.resolve(__dirname, '..', 'static', fileName))
 
             const sector = await Sector.create({address, SectorStatusId, photo:fileName})
             return res.json(sector)

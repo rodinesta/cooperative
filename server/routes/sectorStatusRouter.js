@@ -1,8 +1,7 @@
 const Router = require('express')
 const router = new Router()
+const statusController = require('../controllers/statusController')
 
-router.post('/',)
-router.get('/',)
-router.get('/:id',)
+router.get('/', statusController.getAll)
 
 module.exports = router

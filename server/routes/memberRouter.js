@@ -8,5 +8,6 @@ router.get('/', memberController.getAll)
 router.get('/:id', memberController.getOne)
 router.put('/updatePhoto', memberController.changePhoto)
 router.put('/changeInfo', memberController.changeInfo)
+router.put('/setSector', memberController.setSector)
 
 module.exports = router
