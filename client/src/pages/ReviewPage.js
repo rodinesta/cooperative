@@ -50,7 +50,12 @@ const ReviewPage = observer(() => {
 
     console.log(review.review.MemberId)
 
-    const token = jwt_decode(localStorage.getItem('token'))
+    let token
+    try {
+        token = jwt_decode(localStorage.getItem('token'))
+    } catch {
+        token = null
+    }
     const createCommentBtn = async () => {
         await createComment(text, id, token.id)
         receiveComments().then(data => {
@@ -72,7 +77,7 @@ const ReviewPage = observer(() => {
                         <CommentItem comment={comment} key={comment.id}/>
                     ))}
                 </div>
-                <div className="createComment">
+                {token != null ? <div className="createComment">
                     <textarea
                         value={text}
                         placeholder="Оставьте свой комментарий"
@@ -82,7 +87,7 @@ const ReviewPage = observer(() => {
                     <div style={{width: '100%', textAlign: 'right'}}>
                         <Button onClick={createCommentBtn}>Отправить</Button>
                     </div>
-                </div>
+                </div> : <></>}
             </div>
         </Container>
     );

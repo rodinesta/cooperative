@@ -38,6 +38,7 @@ const NavBar = observer(() => {
                         <Navbar.Brand href="/" className="brand">Дачный кооператив</Navbar.Brand>
                         <Nav>
                             <Nav.Link href={SUPORGS_ROUTE} className="navBarLinks">Поставляющие организации</Nav.Link>
+                            <Nav.Link href={REVIEWS_ROUTE} className="navBarLinks">Отзывы</Nav.Link>
                         </Nav>
                     </div>
 
@@ -49,8 +50,6 @@ const NavBar = observer(() => {
                                     <Nav.Link href={MEMBERS_ROUTE} className="navBarLinks">Список участников</Nav.Link>
                                 </Nav>:<Nav/>
                             }
-
-                            <Nav.Link href={REVIEWS_ROUTE} className="navBarLinks">Отзывы</Nav.Link>
                             <Nav.Link href={PROFILE_ROUTE} className="navBarLinks">Профиль</Nav.Link>
                             <Button className="navBarLinks ms-1" onClick={logOut}>Выйти</Button>
                         </Nav>

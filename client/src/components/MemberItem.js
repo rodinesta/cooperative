@@ -13,6 +13,7 @@ const MemberItem = ({member}) => {
             <text className="memberItemName">{member.secondName} {member.firstName} {member.thirdName}</text>
             <text style={{fontFamily: "Inter Regular"}}>Задолженность: {member.duty} рублей</text>
             <text style={{fontFamily: "Inter Regular"}}>Ежемесячный взнос: {member.paymentAmount} рублей</text>
+            <text style={{fontFamily: "Inter Regular"}}>Номер телефона: {member.phoneNumber}</text>
             <text style={{fontFamily: "Inter Regular"}}>Адрес участка: {sector.address}</text>
         </div>
     );

@@ -37,12 +37,6 @@ const Member = sequelize.define('Member', {
     photo: {type: DataTypes.TEXT},
 })
 
-const Payment = sequelize.define('Payment', {
-    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    sum: {type: DataTypes.INTEGER},
-    paymentData: {type: DataTypes.DATE},
-})
-
 const Role = sequelize.define('Role', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     title: {type: DataTypes.TEXT}
@@ -85,9 +79,6 @@ Review.belongsTo(Member)
 Role.hasMany(Member)
 Member.belongsTo(Role)
 
-Member.hasMany(Payment)
-Payment.belongsTo(Member)
-
 Sector.hasMany(Member)
 Member.belongsTo(Sector)
 
@@ -98,5 +89,5 @@ SupplyingOrganization.belongsToMany(Sector, {through: SectorOrganization})
 
 
 module.exports = {
-    Resource, SupplyingOrganization, SectorStatus, Sector, SectorStatus, Member, Role, Payment, Review, Comment, SectorOrganization
+    Resource, SupplyingOrganization, SectorStatus, Sector, Member, Role, Review, Comment, SectorOrganization
 }

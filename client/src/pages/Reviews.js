@@ -17,7 +17,12 @@ const Reviews = observer(() => {
         event.target.style.height = `${event.target.scrollHeight}px`;
     };
 
-    const memberId = jwt_decode(localStorage.getItem('token')).id
+    let memberId
+    try {
+       memberId = jwt_decode(localStorage.getItem('token')).id
+    } catch (e) {
+        memberId = null
+    }
     const click = async () => {
         try {
             await createReview(text, memberId)
@@ -39,7 +44,7 @@ const Reviews = observer(() => {
     return (
         <div>
             <Container>
-                <div className="writeReview mt-4">
+                {memberId != null ? <div className="writeReview mt-4">
                     <h3>Оставьте здесь свой отзыв</h3>
                     <textarea
                         style={{resize: "none", borderRadius: "5px"}}
@@ -53,7 +58,7 @@ const Reviews = observer(() => {
                     <div style={{display: "flex", justifyContent: "flex-end", width: "100%"}}>
                         <Button onClick={click}>Опубликовать</Button>
                     </div>
-                </div>
+                </div> : <> </>}
 
                 <div className="reviewList">
                     <ReviewList/>
